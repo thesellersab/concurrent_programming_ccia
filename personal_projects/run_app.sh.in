@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Default to the project number used during build
+DEFAULT_PROJ_NUM="@PROJ_NUM@"
+
+# Use argument if provided, else use default
+RUN_NUM=${1:-$DEFAULT_PROJ_NUM}
+
+EXE="${RUN_NUM}_app.exe"
+
+if [ -f "$EXE" ]; then
+    ./$EXE
+else
+    echo "Error: Executable $EXE not found!"
+    exit 1
+fi
